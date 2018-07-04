@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.fileupload.js"></script>
+
+<script>
+
+	$(document).ready(function() {
+		$("#file_upload").on("change", function() {
+			console.log($("#file_upload").val());
+			
+			$("#the_form").ajaxSubmit({
+				success: function(response) {
+					var responseJson = JSON.parse(response);
+					console.log(responseJson);
+					console.log(responseJson.data);
+				}
+			});
+			
+			//$("#the_form").submit();
+		});
+	});
+
+</script>
+
+<title>Insert title here</title>
+</head>
+<body>
+	<form id="the_form" method="post" action="ImageUploadServlet" enctype="multipart/form-data">
+		<input type="file" id="file_upload" name="file">
+	</form>
+	
+
+</body>
+</html>

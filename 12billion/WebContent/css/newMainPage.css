@@ -1,0 +1,244 @@
+@CHARSET "UTF-8";
+
+html, body{ overflow-x: hidden; position: absolute; width : 100%; height : 100%; }
+* { box-sizing: border-box; padding: 0; margin: 0; }
+a { text-decoration: none; }
+ul { list-style: none; }
+
+header {
+	width: 100%;
+	height: 45px;
+	background-color: #e0e0e0;
+}
+
+header h1 {
+	float: left;
+	width: 12%;
+}
+
+header h1 img {
+	width : 95px;
+	height : 33px;
+	margin-left: 100px;
+	margin-top: 2px;
+}
+
+header #sub_menu1 {
+	width : 36%;
+}
+
+header #sub_menu1 li {
+	float: left;
+	width: 12%;
+	line-height: 42px;
+}
+
+header #sub_menu1 li > input[type = "button"] {
+	width : 90%;
+	height : 90%;
+	text-align: center;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+header #sub_menu2 {
+	float: right;
+	width : 10%;
+	margin-right: 10px;
+}
+
+header #sub_menu2 li {
+	float: left;
+	width: 50%;
+	line-height: 42px;
+}
+
+header #sub_menu2 li > input[type = "button"] {
+	width : 90%;
+	height : 90%;
+	text-align: center;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+#editorContainer {
+	height: 80%;
+}
+
+#tagSec {
+	height : 75%;
+	background-color: lightpink;
+	overflow-y: auto;
+}
+
+#tagSec > ul{
+	padding-top: 30px;
+	margin-left: 140px;
+}
+
+#tagSec > ul li{
+	width: 100px;
+	height: 40px;
+	border: 2px solid black;
+	border-radius: 15px;
+	text-align: center;
+	font-size: 1.2em;
+	margin-bottom: 10px;
+	line-height: 30px;
+}
+
+#cssLoad {
+	height : 25%;
+	background-color: #7ACB76;
+}
+
+#cssLoad > input[ name = "load"]{
+	width: 170px;
+	height: 50px;
+	margin-left: 105px;
+	margin-top: 70px;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+#wrap1 {
+	float : left;
+	left : 0;
+	width: 20%;
+	height: 100%;
+}
+
+#dropSec {
+	float: left;
+	width: 60%;
+	height: 100%;
+	background-color: skyblue;
+}
+
+.attrCss {
+	height: 50%;
+}
+
+#attrSec {
+	background-color: lightyellow;
+}
+
+#cssSec {
+	background-color: lightcoral;
+}
+
+#wrap2 {
+	height: 100%;
+}
+
+#wrap2 > #attrSec{
+	width: 100%;
+}
+
+#wrap2 > #attrSec #attrText{
+	position: absolute;
+	padding-top: 5%;
+	margin-left: 85%;
+}
+
+#wrap2 > #attrSec #attrText li{
+	margin-bottom: 10px;
+}
+
+#wrap2 > #attrSec #attrText li input[type="text"]{
+	width: 150px;
+	height: 30px;
+	font-size: 1em;
+}
+
+#wrap2 > #attrSec #attrText li input[type="button"]{
+	width: 50px;
+	height: 30px;
+	background-color: cadetblue;
+	color: white;
+	font-size: 1em;
+	border: none;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+#wrap2 > #attrSec button{
+	position: absolute;
+	width: 70px;
+	height: 40px;
+	border: 1px solid black;
+	border-radius: 10px;
+	font-size: 1em;
+	background-color: transparent;
+	cursor: pointer;
+	margin-top: 15%;
+	margin-left: 8%;
+}
+
+.addModal{
+	background-color: #fff;
+	width: 500px;
+	height: 100%;
+}
+
+.modal .modal-background{
+	opacity: 0.4 !important;
+}
+
+.modal-close{
+	margin-top: 0 !important;
+}
+
+#wrap2 > #cssSec{
+	width: 100%;
+}
+
+#wrap2 > #cssSec #cssText{
+	position: absolute;
+	padding-top: 5%;
+	margin-left: 85%;
+}
+
+#wrap2 > #cssSec #cssText li{
+	margin-bottom: 10px;
+}
+
+#wrap2 > #cssSec #cssText li input[type="text"]{
+	width: 150px;
+	height: 30px;
+	font-size: 1em;
+}
+
+#wrap2 > #cssSec #cssText li input[type="button"]{
+	width: 50px;
+	height: 30px;
+	background-color: cadetblue;
+	color: white;
+	font-size: 1em;
+	border: none;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+#wrap2 > #cssSec button{
+	position: absolute;
+	width: 70px;
+	height: 40px;
+	border: 1px solid black;
+	border-radius: 10px;
+	font-size: 1em;
+	background-color: transparent;
+	cursor: pointer;
+	margin-top: 15%;
+	margin-left: 8%;
+}
+
+#codeSec {
+	width: 100%;
+	height: 100%;
+	background-color: gray;
+}
+
+#codeSec > #editor {
+	width: 100%;
+}

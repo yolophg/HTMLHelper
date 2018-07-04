@@ -1,0 +1,13 @@
+*.classpath
+12billion/.classpath
+12billion/.classpath
+*.classpath
+<<<<<<< HEAD
+12billion/.classpath
+=======
+/bin/
+>>>>>>> origin/master
+*.classpath
+12billion/.settings/org.eclipse.wst.common.project.facet.core.xml
+workspace.xml
+out/

@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="12billionTemp:war exploded">
+    <output-path>$PROJECT_DIR$/WebContent</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="12billion/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="12billion" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/lib/gson-2.8.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/mysql-connector-java-5.1.31.jar" />
+          <element id="file-copy" path="E:/apache-tomcat-9.0.2/lib/jsp-api.jar" />
+          <element id="file-copy" path="E:/apache-tomcat-9.0.2/lib/servlet-api.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

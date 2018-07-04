@@ -1,0 +1,758 @@
+@CHARSET "EUC-KR";
+
+html, body{box-sizing: border-box; margin: 0; padding: 0; height: 1080px; overflow: hidden;}
+
+#draggable {
+	width: 150px;
+	height: 150px;
+	padding: 0.5em;
+}
+
+.icons {
+	position: relative;
+	padding-top: 50px;
+	left: -1px;
+	background-color: #99D9EA;
+	height: 100%;
+	width: 200px;
+	z-index: 2;
+}
+
+.icon:hover {
+	background-color: rgb(211, 249, 188);
+}
+
+.editor {
+	position: relative;
+	overflow-y: auto;
+	left: 190px;
+	width: 800px;
+	height: 97.2%;
+	min-height: 97.2%;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	margin-left: 20px;
+	margin-top: -1130px;
+	z-index: 1;
+}
+
+.editor-parent {
+	position: relative;
+	text-align: right;
+	top: -1070px;
+	left: 1000px;
+	width: 920px;
+	height: 100%;
+}
+
+.editor-parent > #execute{
+	margin-right: 10px;
+	width: 60px; 
+	height: 40px; 
+	margin-top: 10px;
+}
+
+#textareastyle{
+	background-color: #FFFDA3;
+	height: 100%;
+	width: 100%;
+	outline: none;
+	font-size: 25px;
+}
+
+.display {
+	position: relative;
+	top: 350px;
+	left: 730px;
+	width: 500px;
+	min-height: 300px;
+}
+
+.code {
+	width: 96%;
+	height: 93.6%;
+	margin-left: 20px;
+	resize: none;
+	padding-left: 10px;
+	outline: none;
+	font-size: 25px;
+	tab-size: 4;
+}
+
+.area1 {
+	width: 500px;
+	min-height: 296px;
+	resize: none;
+	border: 1px solid #1F7761;
+}
+
+.box {
+	padding: 10px;
+	border: 1px solid;
+	margin-bottom: 20px;
+	top: 0px;
+	background-color: #D3F9BC;
+	
+}
+
+.box .close {
+	float: right;
+}
+
+.close {
+	cursor: pointer;
+	border: none;
+	margin-left: 10px;
+	margin-top: -5px;
+}
+
+#moreEditStyle{
+	float: right;
+	margin-top: -5px;
+	cursor: pointer;
+}
+
+.edit {
+	cursor: pointer;
+	border: 1px solid navy;
+	border-radius: 20px;
+	background-color: transparent;
+	padding: 7px;
+	margin-left: 340px;
+	margin-top: -2px;
+}
+
+.morestyleli {
+	margin-left: -25px;
+	border-radius: 5px;
+	color: black;
+	border: 2px solid;
+	text-align: center;
+	margin-bottom: 4px;
+	font-size: 20px;
+	width: 180px;
+	cursor:pointer;
+	padding-bottom:5px;
+	background-color: #99D9EA;
+}
+
+#closePopupButton{
+	cursor: pointer;
+}
+
+#morestyleOKinput{
+	cursor: pointer;
+	height: 24px;
+}
+
+#attributes_input_popup{
+	z-index:500; 
+	text-align: right;
+}
+
+/*responsive*/
+
+/*1900px*/
+@media all and (max-width : 1911px)
+{
+	.editor-parent > #execute{ margin-right: 25px;}	
+}
+@media all and (max-width : 1900px)
+{
+	.editor-parent > #execute{ margin-right: 35px;}	
+}
+
+
+/*1800px*/
+@media all and (max-width : 1890px)
+{
+	.editor-parent > #execute{ margin-right: 50px;}	
+}
+@media all and (max-width : 1870px)
+{
+	.editor-parent > #execute{ margin-right: 70px;}	
+}
+@media all and (max-width : 1850px)
+{
+	.editor-parent > #execute{ margin-right: 90px;}	
+}
+@media all and (max-width : 1830px)
+{
+	.editor-parent > #execute{ margin-right: 110px;}	
+}
+@media all and (max-width : 1820px)
+{
+	#tag_0{
+		width : 750px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 800px;
+		margin-left:25px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding:10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;
+	}
+	
+	.editor-parent{
+		position: relative;
+		left: 965px;
+		width: 820px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+
+/*1700px*/
+@media all and (max-width : 1785px)
+{
+	.editor-parent > #execute{ margin-right: 60px;}	
+}
+@media all and (max-width : 1745px)
+{
+	.editor-parent > #execute{ margin-right: 80px;}	
+}
+@media all and (max-width : 1725px)
+{
+	.editor-parent > #execute{ margin-right: 100px;}	
+}
+
+@media(max-width : 1720px)
+{
+	#tag_0{
+		width : 700px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 800px;
+		margin-left:28px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;
+	}
+
+	.editor-parent{
+		position: relative;
+		left: 915px;
+		width: 770px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+@media all and (max-width : 1700px)
+{
+	.editor-parent > #execute{ margin-right: 20px;}	
+}
+
+/*1600px*/
+@media all and (max-width : 1680px)
+{
+	.editor-parent > #execute{ margin-right: 40px;}	
+}
+@media all and (max-width : 1640px)
+{
+	.editor-parent > #execute{ margin-right: 70px;}	
+}
+@media (max-width : 1620px)
+{
+	#tag_0{
+		width : 650px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 800px;
+		margin-left:28px;
+		padding-right: 10px;
+	}
+
+	.box {
+	
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;
+	}
+
+	.editor-parent{
+		position: relative;
+		left: 865px;
+		width: 720px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+@media all and (max-width : 1600px)
+{
+	.editor-parent > #execute{ margin-right: 25px;}	
+}
+
+/*1500px*/
+@media all and (max-width : 1560px)
+{
+	.editor-parent > #execute{ margin-right: 50px;}	
+}
+@media all and (max-width : 1540px)
+{
+	.editor-parent > #execute{ margin-right: 70px;}	
+}
+@media(max-width : 1520px)
+{
+	#tag_0{
+		width : 600px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 800px;
+		margin-left:28px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;
+	}
+	.editor-parent{
+		position: relative;
+		left: 815px;
+		width: 670px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+@media all and (max-width : 1500px)
+{
+	.editor-parent > #execute{ margin-right: 20px;}	
+}
+
+/*1400px*/
+@media all and (max-width : 1460px)
+{
+	.editor-parent > #execute{ margin-right: 55px;}	
+}
+@media (max-width : 1420px)
+{
+	#tag_0{
+		width : 550px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 800px;
+		margin-left:28px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;
+	}
+	.editor-parent{
+		position: relative;
+		left: 765px;
+		width: 620px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+@media all and (max-width : 1400px)
+{
+	.editor-parent > #execute{ margin-right: 25px;}	
+}
+
+/*1300px*/
+@media all and (max-width : 1360px)
+{
+	.editor-parent > #execute{ margin-right: 70px;}	
+}
+@media (max-width : 1320px)
+{
+	#tag_0{
+		width : 520px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 800px;
+		margin-left:23px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;
+	}
+	
+	.editor-parent{
+		position: relative;
+		left: 725px;
+		width: 570px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+@media all and (max-width : 1300px)
+{
+	.editor-parent > #execute{ margin-right: 40px;}	
+}
+
+/*1200px*/
+@media all and (max-width : 1260px)
+{
+	.editor-parent > #execute{ margin-right: 70px;}	
+}
+@media all and (max-width : 1240px)
+{
+	.editor-parent > #execute{ margin-right: 80px;}	
+}
+@media all and (max-width : 1230px)
+{
+	.editor-parent > #execute{ margin-right: 100px;}	
+}
+@media (max-width : 1220px)
+{
+	#tag_0{
+		width : 470px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 800px;
+		margin-left:27px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;
+	}
+	
+	.editor-parent{
+		position: relative;
+		left: 685px;
+		width: 500px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+
+
+/*1100px*/
+@media all and (max-width : 1180px)
+{
+	.editor-parent > #execute{ margin-right: 40px;}	
+}
+@media all and (max-width : 1140px)
+{
+	.editor-parent > #execute{ margin-right: 80px;}	
+}
+@media (max-width : 1120px)
+{
+	#tag_0{
+		width : 420px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 800px;
+		margin-left:27px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;
+	}
+	.editor-parent{
+		position: relative;
+		left: 635px;
+		width: 450px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+
+/*1000px*/
+@media all and (max-width : 1080px)
+{
+	.editor-parent > #execute{ margin-right: 40px;}	
+}
+@media all and (max-width : 1050px)
+{
+	.editor-parent > #execute{ margin-right: 70px;}	
+}
+@media all and (max-width : 1020px)
+{
+	#tag_0{
+		width : 405px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 800px;
+		margin-left:-6px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;
+	}
+	
+	.icons {
+		position: relative;
+		padding-top: 50px;
+		left: -1px;
+		background-color: #99D9EA;
+		height: 100%;
+		width: 170px;
+	}
+	
+	.icons li{
+		width: 150px;
+	}
+	
+	.editor-parent{
+		position: relative;
+		
+		left: 585px;
+		width: 400px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+
+
+/*900px*/
+@media all and (max-width : 980px)
+{
+	.editor-parent > #execute{ margin-right: 60px;}	
+}
+@media all and (max-width : 980px)
+{
+	.editor-parent > #execute{ margin-right: 75px;}	
+}
+@media all and (max-width : 920px)
+{
+	#tag_0{
+		width : 355px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 800px;
+		margin-left:-5px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;
+	}
+	
+	.icons {
+		position: relative;
+		padding-top: 50px;
+		left: -1px;
+		background-color: #99D9EA;
+		height: 100%;
+		width: 170px;
+	}
+	
+	.icons li{
+		width: 150px;
+	}
+	
+	.editor-parent{
+		position: relative;
+		left: 535px;
+		width: 350px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+
+/*800px*/
+@media all and (max-width : 880px)
+{
+	.editor-parent > #execute{ margin-right: 50px;}	
+}
+@media all and (max-width : 840px)
+{
+	.editor-parent > #execute{ margin-right: 70px;}	
+}
+@media all and (max-width : 820px)
+{
+	#tag_0{
+		width : 305px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 600px;
+		margin-left:-30px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;		
+	}
+	
+	.icons {
+		position: relative;
+		padding-top: 50px;
+		left: -1px;
+		background-color: #99D9EA;
+		height: 100%;
+		width: 150px;
+	}
+	
+	.icons li{
+		width: 130px;
+	}
+	
+	.editor-parent{
+		position: relative;
+		left: 455px;
+		width: 350px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+@media all and (max-width : 800px)
+{
+	.editor-parent > #execute{ margin-right: 40px;}	
+}
+
+/*700px*/
+@media all and (max-width : 760px)
+{
+	.editor-parent > #execute{ margin-right: 70px;}	
+}
+@media all and (max-width : 740px)
+{
+	.editor-parent > #execute{ margin-right: 80px;}	
+}
+@media all and (max-width : 720px)
+{
+	#tag_0{
+		width : 270px;
+	}
+	
+	.editor {
+		position: relative;
+		width: 400px;
+		margin-left:-43px;
+		padding-right: 10px;
+	}
+
+	.box {
+		padding: 10px;
+		border: 1px solid;
+		margin-bottom: 20px;
+		top: 0px;
+		background-color: #D3F9BC;		
+	}
+	
+	.icons {
+		position: relative;
+		padding-top: 50px;
+		left: -1px;
+		background-color: #99D9EA;
+		height: 100%;
+		width: 140px;
+	}
+	
+	.icons li{
+		width: 120px;
+	}
+	
+	.editor-parent{
+		position: relative;
+		
+		left: 405px;
+		width: 300px;
+		height: 100%;
+	}
+	
+	.editor-parent > #execute{ margin-right: 0px;}	
+}
+@media all and (max-width : 700px)
+{
+	.editor-parent > #execute{ margin-right: 30px;}	
+}
+
+#html-area {
+	background-color: #FFFDA3;
+	border: 2px solid #FFFDA3;
+}
+
+#style-attr {
+	width: 70px;
+}
+
+#style-attr-value {
+	width: 70px;
+	margin-bottom: 5px;
+}
+
+/* #execute {
+	margin-right: 10px;
+	width: 60px;
+	height: 40px;
+	margin-top: 10px;
+
+} */

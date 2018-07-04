@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>HTMLHelper</title>
+
+	<link rel="stylesheet" href="css/newMainPage.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css" />
+
+	<script src="js/tabifier.js" rel="script"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" rel="script"></script>
+	<script>
+		var global_attributes = [
+			"contenteditable","contextmenu", "dir", "draggable",
+			"irrelevant", "lang", "ref", "registrationmark",
+			"tabindex", "template", "title"
+		];
+	
+		var tags = {
+			DIV: global_attributes,
+			A: ["href", "hreflang", "media", "ping", "rel", "target", "type"],
+			INPUT: [
+				"accept", "alt", "auto-complete", "autofocus",
+				"checked", "disabled", "form", "formaction",
+				"formenctype", "formme-thod", "formnovalidate", "formtarget",
+				"height", "list", "max", "maxlength",
+				"min", "multiple", "name", "pattern",
+				"placeholder", "readonly", "required", "size",
+				"src", "step", "type", "value", "width"],
+			IMG: ["src", "height", "width"],
+			TEXTAREA: [
+				"autofocus", "cols", "disabled", "form",
+				"name", "readonly", "required", "rows",
+				"maxlength", "placeholder", "wrap"],
+			BR: global_attributes,
+			EM: global_attributes,
+			I: global_attributes,
+			OL: ["start", "reversed"],
+			OPTION: ["disabled", "label", "selected", "value"],
+			SPAN: global_attributes,
+			TR: global_attributes,
+			HR: global_attributes,
+			LI: ["value"],
+			UL: global_attributes,
+			P: global_attributes,
+			TABLE: global_attributes,
+			TD: ["colspan", "rowspan", "headers"],
+			U: []
+		};
+
+		var styles = [
+			"background", "background-color", "border", "display", "position", "float", "width", "height", "font-size", "margin", "z-index",
+			"text-align", "color"
+		];
+
+        $(window).on("load", function() {
+
+			var attr_dom = $("<div>");
+			for (var item in styles) {
+				var a = $("<a>").html(styles[item]);
+				a.on("click", function() {
+					if ($(this).hasClass("is-active")) {
+						$(this).removeClass("is-active");
+					} else {
+						var style = $(this).addClass("is-active").html();
+					}
+				});
+				attr_dom.append($("<li>").append(a));
+			}
+
+			$(".showAdd").click(function() {
+				var kind = $(this).val();
+
+				if (kind == "attr") {
+
+				} else if (kind == "css") {
+					$("ul[class='menu-list']").append(attr_dom);
+				}
+                $(".modal").addClass("is-active");
+            });
+
+            $(".modal-close").click(function() {
+				$("ul[class='menu-list']").empty();
+                $(".modal").removeClass("is-active");
+            });
+
+            var editorDom = $("script[class]").prop({
+                style: "display: block",
+                type: "text/plain"
+        	});
+
+			var code1 = "<div><div><div></div></div><div></div></div><div><div><div><div></div></div></div></div><div></div>";
+			var code2 = "<div></div>";
+			editorDom.html(cleanHTML(code1));
+
+			var editor = null;
+			try {
+				var lang = String(editorDom.prop("class")).match(/brush\:([ a-zA-Z_]*)\;?/)[1].trim();
+				editor = ace.edit(editorDom[0]);
+				editor.setOptions({
+					maxLines: Infinity,
+					fontSize: "15pt"
+				});
+				editor.setTheme("ace/theme/monokai");
+				editor.getSession().setMode("ace/mode/" + lang);
+				editor.setShowInvisibles(false);
+				editor.setReadOnly(true);
+				editor.setShowPrintMargin(false);
+			} catch(ex) { console.info (ex) }
+
+			$("#codeSec").css("background-color", "rgb(39, 40, 34)");
+        });
+	</script>
+</head>
+<body>
+<header>
+	<h1><a href="MainPage.html"><img src="img/ourLogo.png" /></a></h1>
+	<ul id="sub_menu1">
+		<li><input class="button" type="button" value="New" id="#newBtn"/></li>
+		<li><input class="button" type="button" value="List" id="#listBtn"/></li>
+		<li><input class="button" type="button" value="Save" id="#saveBtn"/></li>
+	</ul>
+
+	<ul id="sub_menu2">
+		<li><input class="button" type="button" value="Sign in" id="#signinBtn"/></li>
+		<li><input class="button" type="button" value="Sign up" id="#signupBtn"/></li>
+	</ul>
+</header>
+
+<div id="editorContainer">
+	<div id="wrap1">
+		<div id="tagSec">
+			<ul>
+				<li>div</li>
+				<li>ul</li>
+				<li>li</li>
+				<li>input</li>
+				<li>textarea</li>
+				<li>table</li>
+				<li>tbody</li>
+				<li>tr</li>
+				<li>td</li>
+				<li>br</li>
+				<li>img</li>
+				<li>p</li>
+				<li>h1</li>
+				<li>h2</li>
+				<li>h3</li>
+				<li>h4</li>
+				<li>h5</li>
+				<li>h6</li>
+			</ul>
+		</div>
+		<div id="cssLoad">
+			<input class="button" type="submit" value="저장된 CSS 불러오기" name="load" />
+		</div>
+	</div>
+
+	<div id="dropSec">
+	</div>
+
+	<div id="wrap2">
+		<div class="attrCss" id="attrSec">
+			<ul id="attrText">
+				<li><input type="text" placeholder="id"/><input type="button" value="확인"/><input type="button" value="삭제"/></li>
+				<li><input type="text" placeholder="class"/><input type="button" value="확인"/><input type="button" value="삭제"/></li>
+				<li><input type="text" placeholder="name"/><input type="button" value="확인"/><input type="button" value="삭제"/></li>
+			</ul>
+
+			<button class="button showAdd" value="attr">추가</button>
+		</div>
+
+		<div class="attrCss" id="cssSec">
+			<ul id="cssText">
+				<li><input type="text" placeholder="background-color"/><input type="button" value="확인"/><input type="button" value="삭제"/></li>
+				<li><input type="text" placeholder="border-radius"/><input type="button" value="확인"/><input type="button" value="삭제"/></li>
+				<li><input type="text" placeholder="margin"/><input type="button" value="확인"/><input type="button" value="삭제"/></li>
+			</ul>
+			<button class="button showAdd" value="css">추가</button>
+		</div>
+	</div>
+</div>
+
+<div id="codeSec">
+	<script class="brush: html" id="editor"></script>
+</div>
+
+<div class="modal">
+	<div class="modal-background"></div>
+	<div class="modal-content">
+		<div class="addModal">
+			<aside class="menu">
+				<p class="menu-label" style="text-align: center">ATTRIBUTES</p>
+				<ul class="menu-list"></ul>
+			</aside>
+			<div class="box has-text-centered">
+				<button class="button">추가</button>
+			</div>
+		</div>
+	</div>
+	<button class="modal-close"></button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Default functionality</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style>
+  	/*#draggable { width: 150px; height: 150px; padding: 0.5em; }*/
+  	
+  	.icons {position: fixed; top: 10px; left: 10px; width: 200px; border: 1px solid #80C0F0; min-height: 300px;}
+  	
+  	.editor {position: fixed; top: 10px; left: 220px; width: 500px; border: 1px solid #80C0F0; min-height: 300px;}
+  	
+  	.texteditor {position: fixed; top: 10px; left: 730px; width: 500px; min-height: 300px;}
+  	.area {width: 500px; min-height: 296px; resize: none; border: 1px solid #80C0F0;}
+  	
+  	.box {padding: 10px; margin: 10px; border: 1px solid;}
+  	.box .close {float: right;}
+  	
+  	.close {cursor: pointer;}
+  	
+  	.edit_popup {position: fixed; top: 100px; left: 100px; width: 500px; display: none; min-height: 100px; border: 1px solid; background: #eee; z-index: 1000;}
+  	
+  </style>
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script src="js/editor.js"></script>
+
+  <script>
+	
+  	var tree = {};
+  	var idPool = 0;
+  
+  	$(document).ready(function() {
+  		$(".icon").draggable();
+  	
+  	  	$(".icon").on("dragstop", function(event, ui) {
+  			$(event.target).css("left", 0);
+  			$(event.target).css("top", 0);
+  		});
+  	
+  	  	$(".editor").droppable({
+			drop : fnDrop,
+		});
+  	});
+  	
+  	function appendTag(container, tag, event)
+  	{
+  		idPool++;
+  		var id = "tag_" + idPool;
+  		
+  		var siblingIndex = calculateTagIndex(container, event);
+  		console.log("siblingIndex : " + siblingIndex);
+  		
+  		var tagName = tag.html();
+  		
+  		var div = $("<div>");
+  		div.prop("id", id);
+  		div.addClass("box");
+  		div.append($("<span class='tag_name'>" + tagName + "</span>"));
+  		
+  		var closeButton = $("<span class='close'>삭제</span>");
+  		div.append(closeButton);
+
+  		var editButton = $("<span class='edit'>편집</span>");
+  		div.append(editButton);
+
+  		closeButton.on("click", function() {
+  			div.remove();
+  			
+  			removeTagData(id);
+  			console.log(tree);
+  		});
+  		
+  		editButton.on("click", function() {
+  			console.log("edit");
+  			openMandatoryAttributesPopup(tagName);
+  		});
+  		
+  		if (siblingIndex == 0)
+  		{
+  			container.prepend(div);
+  		}
+  		else
+  		{
+  			$(container.children()[siblingIndex - 1]).after(div);
+  		}
+  		
+  		
+  		if (tag.hasClass("container"))
+  		{
+  			div.droppable({
+  				drop : fnDrop,
+  			});
+  		}
+  		
+  		appendTagData(id, {id: id, parentId: container.prop("id"), tagName: tagName, container: tag.hasClass("container")});
+  		
+  		console.log(tree);
+  	}
+  	
+  	function fnDrop(event, ui)
+  	{
+  		console.log(event);
+  		
+		if (event.target == event.toElement)
+  		{
+  			appendTag($(event.target), $(ui.draggable), event);
+  			// var node = blockToCode("tag_0", $("tag_0"));
+  			// $(".area").val(node.val());
+  		}
+  	}
+  	
+  	function appendTagData(id, data)
+  	{
+  		tree[id] = data;
+  	}
+  	
+  	function removeTagData(id)
+  	{
+  		for (var i in tree)
+  		{
+  			if (tree[i].id == id)
+  			{
+  				delete tree[i];
+  			}
+  		}
+  		
+  		for (var i in tree)
+  		{
+  			if (tree[i].parentId == id)
+  			{
+  				removeTagData(tree[i].id);
+  			}
+  		}
+  		
+  	}
+  	
+</script>
+</head>
+<body>
+
+<div class="icons">
+	<ul class="">
+		<li class="icon container">DIV</li>
+		<li class="icon">INPUT</li>
+		<li class="icon container">A</li>
+	</ul>
+</div>
+
+<div class="editor droppable" id="tag_0">
+
+</div>
+
+<div class="texteditor">
+	<textarea class="area"></textarea>
+</div>
+
+<div class="edit_popup"></div>
+ 
+</body>
+</html>

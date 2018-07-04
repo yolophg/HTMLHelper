@@ -1,0 +1,19 @@
+
+#attributes_input_popup {
+	display: none;
+	position: fixed;
+	background-color: #FED8CD;
+    padding: 5px;
+	/*color: #ffffff; */
+	border: 2px solid;
+	border-radius: 10px;
+	font-size: 22px;
+	      		
+	      	
+}
+
+#attributes_input_popup .close_button {
+	display: inline-block;
+	color: red;
+}
+
